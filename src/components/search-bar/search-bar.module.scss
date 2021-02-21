@@ -1,11 +1,11 @@
 @import '../../variables.scss';
 $button-width: 40px;
 
-.search-bar {
+.searchBar {
   background: $primary;
   @include flex-centered-content;
 
-  &__container {
+  .container {
     @include flex-centered-content;
     margin: 0 1rem;
     width: $container-width;
@@ -14,13 +14,13 @@ $button-width: 40px;
     height: 40px;
   }
 
-  &__logo {
+  .logo {
     height: 100%;
     width: auto;
     margin-right: 1.5rem;
   }
 
-  &__input {
+  .input {
     flex-grow: 1;
     height: 30px;
     font-size: 18px;
@@ -29,7 +29,7 @@ $button-width: 40px;
     border-radius: 2px;
   }
 
-  &__button {
+  .button {
     margin-left: -$button-width;
     width: $button-width;
     height: 100%;
