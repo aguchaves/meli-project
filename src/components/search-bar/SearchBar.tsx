@@ -15,27 +15,34 @@ const SearchBar: React.FC<Props> = (props) => {
     setValue(e.target.value);
   }
 
-  const debounceSearch = useRef(
-    debounce(query => {
-      getItems(query)
-        .then(data => {
-          props.saveList(data.results)
-        });
-    }, 500)
-  )
+  const handleClick = () => {
+    getItems(value)
+      .then(data => {
+        props.saveList(data.results)
+      });
+  }
 
-  useEffect(() => {
-    if (value) {
-      debounceSearch.current(value);
-    }
-  }, [value])
+  // const debounceSearch = useRef(
+  //   debounce(query => {
+  //     getItems(query)
+  //       .then(data => {
+  //         props.saveList(data.results)
+  //       });
+  //   }, 500)
+  // )
+
+  // useEffect(() => {
+  //   if (value) {
+  //     debounceSearch.current(value);
+  //   }
+  // }, [value])
 
   return (
     <div className="search-bar">
       <div className="search-bar__container">
         <img className="search-bar__logo" src={logo} alt="ML-logo"/>
         <input className="search-bar__input" id="search" type="text" placeholder="Nunca dejes de buscar" value={value} onChange={handleChange}></input>
-        <button className="search-bar__button">
+        <button className="search-bar__button" onClick={handleClick}>
           <img src={searchIcon} alt="search"/>
         </button>
       </div>
