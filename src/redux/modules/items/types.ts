@@ -14,5 +14,16 @@ export enum ItemsActionConsts {
 export interface Item {
   id: string,
   title: string,
-  price: number
+  price: number,
+  thumbnail: string,
+  address: Address,
+  shipping: Shipping
+}
+
+export interface Address {
+  state_name: string
+}
+
+export interface Shipping {
+  free_shipping: boolean
 }
