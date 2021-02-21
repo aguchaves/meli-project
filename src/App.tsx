@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 import SearchBar from './components/search-bar';
 import ItemsList from './components/items-list';
+import ItemDetail from './components/item-detail/ItemDetail';
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
         </div>
 
         <Switch>
+          <Route path="/items/:id">
+            <ItemDetail />
+          </Route>
           <Route path="/items">
             <ItemsList />
           </Route>

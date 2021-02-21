@@ -1,0 +1,62 @@
+@import '../../variables.scss';
+$image-width: 680px;
+
+.itemDetail {
+  background: $grey-3;
+  color: $dark;
+  @include flex-centered-content;
+  padding-bottom: 3rem;
+
+  .container {
+    width: $container-width;
+  }
+
+  .productContent {
+    background: #fff;
+    padding: 2rem;
+    display: flex;
+
+    .productContentInfo {
+      display: flex;
+
+      .details {
+        padding-left: 1rem;
+
+        .condition {
+          font-size: .75rem;
+        }
+
+        .title {
+          font-size: 1.5rem;
+          font-weight: 600;
+        }
+
+        .price {
+          font-size: 2.875rem;
+          font-weight: 400;
+        }
+      }
+    }
+
+    .description {
+      width: $image-width;
+
+      .image {
+        max-height: $image-width;
+        height: auto;
+        width: $image-width;
+        object-fit: contain;
+      }
+
+      .title {
+        margin-bottom: 2rem;
+        font-size: 1.75rem;
+      }
+
+      .text {
+        font-size: 1rem;
+        color: $grey-2;
+      }
+    }
+  }
+}
