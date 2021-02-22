@@ -8,6 +8,7 @@
   .container {
     width: $container-width;
     margin: 0 2rem;
+    padding-bottom: 4rem;
   }
 
   .breadcrums {
@@ -21,6 +22,12 @@
       color: $grey-2;
       position: relative;
       margin: 0 1.5rem 0 0;
+      font-weight: 500;
+
+      &:last-child {
+        font-weight: 800;
+      }
+
       &:not(:last-child) {
         &::after {
           position: absolute;
@@ -37,6 +44,7 @@
     list-style: none;
     padding: 0;
     margin-top: 0;
+    border-radius: 4px;
   }
 
   .link {
@@ -45,9 +53,12 @@
   }
   
   .item {
-    border-bottom: 1px solid $grey-3;
     display: flex;
     margin: 0 1rem;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $grey-3;
+    }
 
     &:hover {
       cursor: pointer;

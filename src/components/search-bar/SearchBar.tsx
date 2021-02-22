@@ -5,6 +5,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import css from './search-bar.module.scss';
 import logo from '../../assets/Logo_ML@2x.png';
 import searchIcon from '../../assets/ic_Search@2x.png';
+import { IItemsList } from '../../redux/modules/items';
 
 interface Props extends ReduxProps {}
 
@@ -21,10 +22,19 @@ const SearchBar: React.FC<Props> = (props) => {
   }
   let query = useQuery().get('search');
 
+  const parseData = (data: any) => {
+    const parsedItems = data.items.slice(0,4);
+    const parsedList = {
+      categories: data.categories,
+      items: parsedItems
+    }
+    return parsedList;
+  }
+
   const handleClick = () => {
     getItems(value)
-      .then(data => {        
-        props.saveList(data)
+      .then(data => {     
+        props.saveList(parseData(data))
         if (value) {
           history.push(`/items?search=${value}`);
         } else {
@@ -38,7 +48,7 @@ const SearchBar: React.FC<Props> = (props) => {
       setValue(query)
       getItems(query)
         .then(data => {
-          props.saveList(data)
+          props.saveList(parseData(data))
         });
     } 
   }, []);

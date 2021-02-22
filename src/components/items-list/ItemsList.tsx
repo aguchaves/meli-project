@@ -9,7 +9,6 @@ interface Props extends ReduxProps {}
 
 const ItemsList: React.FC<Props> = ({list}) => {
 
-  console.log(list);
   const [itemClicked, setItemClicked] = useState({});
 
   const getFormattedPrice = (price: number) => {
@@ -24,7 +23,7 @@ const ItemsList: React.FC<Props> = ({list}) => {
         <ul className={css.breadcrums}>
           {
             list.categories.map(category =>
-              <li className={css.item}>{category}</li>
+              <li key={category} className={css.item}>{category}</li>
             )
           }
         </ul>
@@ -33,12 +32,11 @@ const ItemsList: React.FC<Props> = ({list}) => {
             list.items.map(item => 
               <Link key={item.id} className={css.link} to={"/items/" + item.id}>
                 <li className={css.item}>
-                  {console.log(item)}
                   <img className={css.thumbnail} src={item.picture} alt="Item picture"/>
                   <div className={css.info}>
                     <div className={css.header}>
                       <div className={css.price}>
-                        ${getFormattedPrice(item.price.amount)}
+                        $ {getFormattedPrice(item.price.amount)}
                         {
                           item.free_shipping && <img src={shippingImg} alt="shipping"/>
                         }
