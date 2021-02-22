@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ReduxProps } from '.';
 import { getItems } from '../../api';
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import css from './search-bar.module.scss';
 import logo from '../../assets/Logo_ML@2x.png';
 import searchIcon from '../../assets/ic_Search@2x.png';
@@ -16,13 +16,32 @@ const SearchBar: React.FC<Props> = (props) => {
     setValue(e.target.value);
   }
 
+  const useQuery = () => {
+    return new URLSearchParams(useLocation().search);
+  }
+  let query = useQuery().get('search');
+
   const handleClick = () => {
     getItems(value)
-      .then(data => {
-        props.saveList(data.results)
-        history.push("/items");
+      .then(data => {        
+        props.saveList(data)
+        if (value) {
+          history.push(`/items?search=${value}`);
+        } else {
+          history.push("/items");
+        }
       });
   }
+
+  useEffect(() => {
+    if (query) {
+      setValue(query)
+      getItems(query)
+        .then(data => {
+          props.saveList(data)
+        });
+    } 
+  }, []);
 
   return (
     <div className={css.searchBar}>

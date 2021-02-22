@@ -1,8 +1,9 @@
-const apiML = 'https://api.mercadolibre.com/';
+const apiML = 'http://localhost:8000/';
 
 export const getItems = async (query: string) => {
   try {
-    const data = await fetch(`${apiML}sites/MLA/search?q=${query}`)
+    const data = await fetch(`${apiML}api/items?q=${query}`)
+    
     return await data.json();
   } catch(e) {
     console.log(e);
@@ -11,7 +12,7 @@ export const getItems = async (query: string) => {
 
 export const getItem = async (id: string) => {
   try {
-    const data = await fetch(`${apiML}items/${id}`)
+    const data = await fetch(`${apiML}api/items/${id}`)
     return await data.json();
   } catch(e) {
     console.log(e);

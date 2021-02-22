@@ -4,9 +4,10 @@
   background: $grey-3;
   color: $dark;
   @include flex-centered-content;
-
+  
   .container {
     width: $container-width;
+    margin: 0 2rem;
   }
 
   .list {
