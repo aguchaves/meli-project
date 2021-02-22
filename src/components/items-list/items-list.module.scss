@@ -4,15 +4,47 @@
   background: $grey-3;
   color: $dark;
   @include flex-centered-content;
-
+  
   .container {
     width: $container-width;
+    margin: 0 2rem;
+    padding-bottom: 4rem;
+  }
+
+  .breadcrums {
+    display: flex;
+    list-style: none;
+    padding: 1rem 0;
+    margin: 0;
+
+    .item {
+      font-size: .75rem;
+      color: $grey-2;
+      position: relative;
+      margin: 0 1.5rem 0 0;
+      font-weight: 500;
+
+      &:last-child {
+        font-weight: 800;
+      }
+
+      &:not(:last-child) {
+        &::after {
+          position: absolute;
+          right: -1rem;
+          content: '>';
+          top: 0;
+        }
+      }
+    }
   }
 
   .list {
     background: #fff;
     list-style: none;
     padding: 0;
+    margin-top: 0;
+    border-radius: 4px;
   }
 
   .link {
@@ -21,9 +53,12 @@
   }
   
   .item {
-    border-bottom: 1px solid $grey-3;
     display: flex;
     margin: 0 1rem;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $grey-3;
+    }
 
     &:hover {
       cursor: pointer;

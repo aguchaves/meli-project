@@ -6,34 +6,63 @@ $image-width: 680px;
   color: $dark;
   @include flex-centered-content;
   padding-bottom: 3rem;
-
+  
   .container {
     width: $container-width;
+    margin: 0 2rem;
   }
 
-  .productContent {
+  .content {
     background: #fff;
     padding: 2rem;
     display: flex;
 
-    .productContentInfo {
+    .info {
       display: flex;
 
       .details {
         padding-left: 1rem;
+        width: 100%;
 
         .condition {
           font-size: .75rem;
+          margin-bottom: 1rem;
         }
 
         .title {
           font-size: 1.5rem;
           font-weight: 600;
+          margin: 0 0 2rem;
         }
 
         .price {
           font-size: 2.875rem;
           font-weight: 400;
+          display: flex;
+          align-items: flex-start;
+          line-height: 1;
+          margin: 0 0 2rem;
+
+          .decimals {
+            font-size: 1.5rem;
+            margin-top: 4px;
+          }
+        }
+
+        .button {
+          background: $button-primary;
+          color: #fff;
+          border-radius: 6px;
+          width: 100%;
+          padding: 12px;
+          font-size: 1rem;
+          border: none;
+          transition: all .2s ease;
+
+          &:hover {
+            background: $button-primary-hover;
+            cursor: pointer;
+          }
         }
       }
     }
@@ -56,6 +85,7 @@ $image-width: 680px;
       .text {
         font-size: 1rem;
         color: $grey-2;
+        white-space: pre-line;
       }
     }
   }

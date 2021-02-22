@@ -3,7 +3,10 @@ import { ActionType } from 'typesafe-actions';
 import { ItemsActionConsts, ItemsActionTypes, ItemsState } from './types';
 
 const initialState: ItemsState = {
-  list: []
+  list: {
+    categories: [],
+    items: []
+  }
 }
 
 export const itemsReducer: Reducer<ItemsState, ItemsActionTypes> = (state = initialState, action): ItemsState => {

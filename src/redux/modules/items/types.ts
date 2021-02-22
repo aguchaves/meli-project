@@ -2,7 +2,7 @@ import { ActionType } from 'typesafe-actions';
 import * as actions from './actions';
 
 export interface ItemsState {
-  readonly list: Item[]
+  readonly list: IItemsList
 };
 
 export type ItemsActionTypes = ActionType<typeof actions>;
@@ -14,16 +14,23 @@ export enum ItemsActionConsts {
 export interface Item {
   id: string,
   title: string,
-  price: number,
-  thumbnail: string,
-  address: Address,
-  shipping: Shipping
+  price: {
+    currency: string,
+    amount: number,
+    decimals: number
+  },
+  picture: string,
+  condition: string,
+  free_shipping: boolean,
+  state: string,
 }
 
-export interface Address {
-  state_name: string
+export interface ItemDetail extends Item {
+  description: string,
+  sold_quantity: number
 }
 
-export interface Shipping {
-  free_shipping: boolean
+export interface IItemsList {
+  categories: string[],
+  items: Item[]
 }
