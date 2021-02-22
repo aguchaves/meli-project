@@ -21,15 +21,13 @@ const ItemsList: React.FC<Props> = ({list}) => {
   return (
     <div className={css.itemsList}>
       <div className={css.container}>
-        <div className={css.breadcrums}>
-          {/* <ul>
-            {
-              list.categories.map(category =>
-                <li>{category}</li>
-              )
-            }
-          </ul> */}
-        </div>
+        <ul className={css.breadcrums}>
+          {
+            list.categories.map(category =>
+              <li className={css.item}>{category}</li>
+            )
+          }
+        </ul>
         <ul className={css.list}>
           {
             list.items.map(item => 
